@@ -18,7 +18,7 @@
     <div class="card-body">
         <h2>Lista de Participante</h2>
 
-        <a href="{{ asset('/gestionarParticipante') }}" class="btn btn-primary"
+        <a href="/gestionarParticipante" class="btn btn-primary"
             style='position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px 20px; border-radius: 5px;'>+
             Nuevo Participante</a>
         <table class="table">
@@ -34,30 +34,20 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($participantes as $participante)
                 <tr>
-                    <td>Egardo</td>
-                    <td>Alfonso</td>
-                    <td>Vegas</td>
-                    <td>Key</td>
-                    <td>24-12-2006</td>
-                    <td>Masculino</td>
+                    <td>{{ $participante["Primer Nombre"] }}</td>
+                    <td>{{ $participante["Segundo Nombre"] }}</td>
+                    <td>{{ $participante["Primer Apellido"] }}</td>
+                    <td>{{ $participante["Segundo Apellido"] }}</td>
+                    <td>{{ $participante["Fecha De Nacimiento"] }}</td>
+                    <td>{{ $participante["Genero"] }}</td>
                     <td class="actions">
                         <button class="btn btn-primary btn btn-edit">Editar</button>
-                        <button class="btn btn-danger   btn btn-delete">Eliminar</button>
+                        <button class="btn btn-danger  btn btn-delete">Eliminar</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>Oscar</td>
-                    <td>Daniel</td>
-                    <td>Garcia</td>
-                    <td>Gonzales</td>
-                    <td>10-09-2006</td>
-                    <td>Femenino</td>
-                    <td class="actions">
-                        <button class="btn btn-primary btn btn-edit">Editar</button>
-                        <button class="btn btn-danger btn btn-delete">Eliminar</button>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
         <nav aria-label="Page navigation">

@@ -18,13 +18,14 @@ Route::get('/evento/asistencia/{id}', [EventoController::class, 'asistencia'])->
 Route::post('/evento/asistencia', [EventoController::class, 'guardarAsistencia'])->name('eventos.guardarAsistencia');
 
 
+Route::get('/gestionarEvento', [GestionarEvento::class, 'gestionarEvento']);
 
+Route::get('/encargado', [GestionarEncargado::class, 'index']);
+Route::get('/gestionarEncargado', [GestionarEncargado::class, 'gestionarEncargado']);
 
-Route::get('/encargado', [\App\Http\Controllers\EventoController::class, 'encargado']);
-Route::get('/gestionarEncargado', [\App\Http\Controllers\GestionarEncargado::class, 'gestionarEncargado']);
+Route::get('/participante', [GestionarParticipante::class, 'index'])->name('participante.index');
+Route::get('/gestionarParticipante', [GestionarParticipante::class, 'gestionarParticipante'])->name('participante.gestionarParticipante');
 
-Route::get('/participante', [\App\Http\Controllers\EventoController::class, 'participante']);
-Route::get('/gestionarParticipante', [\App\Http\Controllers\GestionarParticipante::class, 'gestionarParticipante']);
 
 Route::get('/gestionarAsistencia', [\App\Http\Controllers\GestionarAsistencia::class, 'gestionarAsistencia']);
 
