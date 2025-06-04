@@ -21,11 +21,10 @@
       width: 50%;
     }
 
-    h2 {
-      text-align: center;
-      color: #007bff;
-      margin-bottom: 50px;
-    }
+  h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
 
     .form-grid {
       display: grid;

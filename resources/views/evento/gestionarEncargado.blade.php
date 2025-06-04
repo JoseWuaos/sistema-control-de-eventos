@@ -1,62 +1,52 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/gestionarEncargado.css') }}"> 
-    <title>gestionar Encargado</title>
-</head>
-<body>
 @extends('components.layout')
 
-@section('title', 'Listado de Eventos')
-
-@section('styles')
-    
-@endsection
+@section('title', 'Agregar Encargado')
 
 @section('content')
 
-   <div class="form-container">
-    <h2>Agrega Nuevo Encargado</h2>
-    <form>
-      <div class="form-grid">
-        <div>
-          <label for="primer-nombre">Primer Nombre</label>
-          <input type="text" id="primer-nombre" name="primer-nombre">
-        </div>
-        <div>
-          <label for="segundo-nombre">Segundo Nombre</label>
-          <input type="text" id="segundo-nombre" name="segundo-nombre">
-        </div>
-        <div>
-          <label for="primer-apellido">Primer Apellido</label>
-          <input type="text" id="primer-apellido" name="primer-apellido">
-        </div>
-        <div>
-          <label for="segundo-apellido">Segundo Apellido</label>
-          <input type="text" id="segundo-apellido" name="segundo-apellido">
-        </div>
-        <div>
-          <label for="fecha-nacimiento">Fecha de Nacimiento</label>
-          <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
-        </div>
-        <div>
-          <label for="genero">Género</label>
-          <select id="genero" name="genero">
-            <option value="">Seleccione</option>
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
-            <option value="otro">Otro</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-footer">
-        <button type="submit">Confirmar</button>
-      </div>
-    </form>
-  </div>
+<br>
+<br>
 
-</body>
-</html>
+    @include('components.title', [ 'title' => 'Gestionar Encargado'])
+
+<div class="card " style="box-shadow: 0 0 10px rgba(0,0,0,0.08); ">
+    <div class="card-body">
+        <h2>Agregar un Encargado</h2>
+        <form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="Nombre" class="form-label">Primer Nombre</label>
+                        <input type="text" id="Nombre" name="Nombre" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="Direccion" class="form-label">Segundo Nombre</label>
+                        <input type="text" id="Direccion" name="Direccion" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="Fecha inicio" class="form-label">Primer Apellido</label>
+                        <input type="text" id="Fecha de inicio" name="fecha de inicio" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="Fecha final" class="form-label">Segundo Apellido</label>
+                        <input type="text" id="Fecha Final" name="Fecha final" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="Encargado" class="form-label">Genero</label>
+                        <select id="Encargado" name="Encargado" class="form-select">
+                            <option value="">Seleccione</option>
+                            <option value="Festejo">Femenino</option>
+                            <option value="Feria Cultural">Masculino</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <button class="btn btn-primary float-end mt-3">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@endsection
