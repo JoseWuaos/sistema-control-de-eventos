@@ -20,7 +20,7 @@
     <div class="card-body">
         <h2>Lista de Encargado</h2>
 
-        <a href="{{ asset('/gestionarEncargado') }}" class="btn btn-primary"
+        <a href="/gestionarEncargado'" class="btn btn-primary"
             style='position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px 20px; border-radius: 5px;'>+
             Nuevo Encargado</a>
 

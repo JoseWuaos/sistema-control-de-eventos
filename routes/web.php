@@ -15,14 +15,14 @@ Route::get('/', function () {
 Route::get('/evento', [\App\Http\Controllers\EventoController::class, 'evento']);
 
 
+Route::get('/gestionarEvento', [GestionarEvento::class, 'gestionarEvento']);
 
-Route::get('/gestionarEvento', [\App\Http\Controllers\GestionarEvento::class, 'gestionarEvento']);
+Route::get('/encargado', [GestionarEncargado::class, 'index']);
+Route::get('/gestionarEncargado', [GestionarEncargado::class, 'gestionarEncargado']);
 
-Route::get('/encargado', [\App\Http\Controllers\EventoController::class, 'encargado']);
-Route::get('/gestionarEncargado', [\App\Http\Controllers\GestionarEncargado::class, 'gestionarEncargado']);
+Route::get('/participante', [GestionarParticipante::class, 'index'])->name('participante.index');
+Route::get('/gestionarParticipante', [GestionarParticipante::class, 'gestionarParticipante'])->name('participante.gestionarParticipante');
 
-Route::get('/participante', [\App\Http\Controllers\EventoController::class, 'participante']);
-Route::get('/gestionarParticipante', [\App\Http\Controllers\GestionarParticipante::class, 'gestionarParticipante']);
 
 Route::get('/gestionarAsistencia', [\App\Http\Controllers\GestionarAsistencia::class, 'gestionarAsistencia']);
 

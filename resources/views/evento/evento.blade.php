@@ -19,7 +19,7 @@
     <div class="card-body">
         <h2>Lista de Evento</h2>
 
-        <a href="{{ asset('/gestionarEvento') }}" class="btn btn-primary"
+        <a href="/gestionarEvento" class="btn btn-primary"
             style='position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px 20px; border-radius: 5px;'>+
             Nuevo Evento</a>
 
