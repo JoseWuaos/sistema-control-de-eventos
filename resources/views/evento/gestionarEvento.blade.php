@@ -25,36 +25,38 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="Nombre" class="form-label">Nombre</label>
-                            <input type="text" id="Nombre" name="Nombre" class="form-control">
+                            <input type="text" id="Nombre" name="nombre" class="form-control">
                         </div>
                         <div class="col-sm-6">
                             <label for="Direccion" class="form-label">Direccion</label>
-                            <input type="text" id="Direccion" name="Direccion" class="form-control">
+                            <input type="text" id="Direccion" name="direccion" class="form-control">
                         </div>
                         <div class="col-sm-6">
                             <label for="Fecha inicio" class="form-label">Fecha inicio</label>
-                            <input type="text" id="Fecha de inicio" name="fecha de inicio" class="form-control">
+                            <input type="date"  id="Fecha de inicio" name="fecha_inicio" class="form-control">
                         </div>
                         <div class="col-sm-6">
                             <label for="Fecha final" class="form-label">Fecha final</label>
-                            <input type="text" id="Fecha Final" name="Fecha final" class="form-control">
+                            <input type="date"  id="Fecha Final" name="fecha_fin" class="form-control">
                         </div>
+                        
                         <div class="col-sm-6">
-                            <label for="Encargado" class="form-label">Genero</label>
-                            <select id="Encargado" name="Encargado" class="form-select">
+                            <label for="tipoDeevento" class="form-label">Tipo de evento</label>
+                            <select id="tipoDeevento" name="tipo_de_evento_id" class="form-select">>
                                 <option value="">Seleccione</option>
-                                <option value="Festejo">Femenino</option>
-                                <option value="Feria Cultural">Masculino</option>
-                                <option value="otro">Otro</option>
+                                @foreach ($tiposDeEventos as $tipoDeEvento)
+                                    <option value="<?= $tipoDeEvento['id']?>"><?= $tipoDeEvento['descripcion']?></option>
+                                @endforeach
                             </select>
                         </div>
+
                         <div class="col-sm-6">
                             <label for="Encargado" class="form-label">Encargado</label>
-                            <select id="Encargado" name="Encargado" class="form-select">>
+                            <select id="Encargado" name="encargado_id" class="form-select">>
                                 <option value="">Seleccione</option>
-                                <option value="Festejo">Jose Abello</option>
-                                <option value="Feria Cultural">Maria Teresa</option>
-                                <option value="otro">Otro</option>
+                                @foreach ($encargados as $encargado)
+                                    <option value="<?= $encargado['id']?>"><?= $encargado['primer_nombre'] . ' ' . $encargado['primer_apellido']?></option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-sm-12 ">

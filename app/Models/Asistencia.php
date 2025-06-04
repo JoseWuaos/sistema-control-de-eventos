@@ -21,8 +21,15 @@ class asistencia extends Model
     //los artibutos del modelo 
     protected $attributes = [
         'asistencia' => 'string',
-        'evento_id' => 'string',
-        'participante_id' => 'string',
+        'evento_id' => 'uuid',
+        'participante_id' => 'uuid',
+        
+    ];
+
+    protected $fillable = [
+        'asistencia' ,
+        'evento_id' ,
+        'participante_id'
         
     ];
 
