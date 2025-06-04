@@ -1,17 +1,23 @@
 @extends('components.layout')
 
-@section('title', 'Agregar evento')
+@section('title', 'Listado de Eventos')
+
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/evento.css') }}">
+@endsection
 
 @section('content')
 
+
 <br>
 <br>
+
 
 @include('components.title', [ 'title' => 'Gestionar evento'])
 
 <div class="card " style="box-shadow: 0 0 10px rgba(0,0,0,0.08);">
     <div class="card-body">
-
+        <h2>Agregar un Evento</h2>
         <form>
             <div class="container">
                 <div class="row">
@@ -49,7 +55,6 @@
                             <option value="otro">Otro</option>
                         </select>
                     </div>
-
                     <div class="col-sm-12 ">
                         <button class="btn btn-primary float-end mt-3">Confirmar</button>
                     </div>
