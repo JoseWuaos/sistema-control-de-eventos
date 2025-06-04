@@ -12,11 +12,12 @@
 <div class="card " style="box-shadow: 0 0 10px rgba(0,0,0,0.08);">
     <div class="card-body">
 
-        <form>
+        <form action="/evento" method="post">
+            @csrf
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <label for="Nombre" class="form-label" >Nombre</label>
+                        <label for="Nombre" class="form-label">Nombre</label>
                         <input type="text" id="Nombre" name="Nombre" class="form-control">
                     </div>
                     <div class="col-sm-6">
@@ -51,7 +52,7 @@
                     </div>
 
                     <div class="col-sm-12 ">
-                        <button class="btn btn-primary float-end mt-3">Confirmar</button>
+                        <button class="btn btn-primary float-end mt-3" type="submit">Guardar</button>
                     </div>
                 </div>
             </div>

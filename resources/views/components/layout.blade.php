@@ -7,6 +7,8 @@
     <title>@yield('title', 'Mi App')</title>
     <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
      <link rel="stylesheet" href="{{ asset('dist/bootstrap-5.0.2-dist/css/bootstrap.css') }}">
+         <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 
 <body>

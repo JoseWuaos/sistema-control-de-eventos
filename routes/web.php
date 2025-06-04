@@ -12,7 +12,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/evento', [\App\Http\Controllers\EventoController::class, 'evento']);
+Route::get('/evento', [EventoController::class, 'index'])->name('eventos.index');
+Route::post('/evento', [EventoController::class, 'guardar'])->name('eventos.guardar');
 
 
 
