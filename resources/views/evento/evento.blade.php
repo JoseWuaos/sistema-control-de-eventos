@@ -8,19 +8,21 @@
 
 @section('content')
 
-<br>
-<br>
+       <br>
+        <br>
 
-@include('components.title', [ 'title' => 'Gestion de Eventos'])
+          <h1 class="titulo">Gestion de Eventos</h1>
+<div style="width: 100%; padding: 3px; background-color: blue ">
 
-<div class="card" style="margin-top: 48px; box-shadow: 0 0 10px rgba(0,0,0,0.08);">
+</div>
+<div class="card" style="width: 100% margin-top: 48px; box-shadow: 0 0 10px rgba(0,0,0,0.08);">
     <div class="card-body">
-        <h2>Lista de Eventos</h2>
+        <h2>Lista de Evento</h2>
 
-        <a href="/gestionarEvento" class="btn btn-primary"
+        <a href="{{ asset('/gestionarEvento') }}" class="btn btn-primary"
             style='position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px 20px; border-radius: 5px;'>+
-            Nuevo Evento
-        </a>
+            Nuevo Evento</a>
+
 
 
 
@@ -46,9 +48,9 @@
                     <td>{{$evento["encargado"]["primer_nombre"] .' '. $evento["encargado"]["primer_apellido"] }}</td>
                     <td>{{$evento["tipo_de_evento"]["descripcion"] }}</td>
                     <td class="actions">
-                        <button class="btn btn-edit">Asistencia</button>
-                        <button class="btn btn-edit">Editar</button>
-                        <button class="btn btn-delete">Eliminar</button>
+                        <button class="btn btn-success ">Asistencia</button>
+                        <button class="btn btn-primary btn btn-edit">Editar</button>
+                        <button class="btn btn-danger btn btn-delete">Eliminar</button>
                     </td>
                 </tr>
                 @endforeach
