@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Encargado; // <-- ¡Añade esta línea!
 
 class GestionarEncargado extends Controller
 {
-   public function index()
+    public function index()
     {
-        return view('encargado.index');
-    }
-    
-    public function gestionarEncargado()
-    {
-
-        return view('encargado.gestionarEncargado');
+        $encargados = Encargado::all();
+        return view('encargado.index', compact('encargados'));
     }
 }

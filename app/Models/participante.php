@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,13 +24,20 @@ class participante extends Model
         'segundo_nombre' => 'string',
         'primer_apellido' => 'string',
         'segundo_apellido' => 'string',
-        'fecha_nacimiento' => 'datetime',
+       // 'fecha_nacimiento' => 'datetime',
         'genero_id' => 'string',
     ];
+    protected $casts = [
+    'fecha_nacimiento' => 'date', // O 'datetime' si tu columna en la base de datos incluye la hora
+    // ... otros casts para id, genero_id, etc.
+];
 
-    public function genero (): HasMany{
-       return $this->hasMany(genero::class, 'id', 'genero_id');
+    public function genero (): BelongsTo {
+       return $this->belongsTo(genero::class, 'genero_id', 'id');
     }
 
+     public static function findAll($perPage = 10){
+        return self::paginate($perPage);
+    }
     
 }

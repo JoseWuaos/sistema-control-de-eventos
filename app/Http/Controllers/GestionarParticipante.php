@@ -10,7 +10,7 @@ class GestionarParticipante extends Controller
   public function index()
 {
   $participantes = Participante::all();
-   return view('participante', compact('participantes'));
+   return view('participante.index', compact('participantes'));
 }
 
     public function gestionarParticipante()

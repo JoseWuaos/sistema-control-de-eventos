@@ -1,6 +1,6 @@
 @extends('components.layout')
 
-@section('title', 'Listado de Eventos')
+@section('title', 'Listado de Participantes')
 
 @section('styles')
 
@@ -36,12 +36,12 @@
             <tbody>
                 @foreach ($participantes as $participante)
                 <tr>
-                    <td>{{ $participante["Primer Nombre"] }}</td>
-                    <td>{{ $participante["Segundo Nombre"] }}</td>
-                    <td>{{ $participante["Primer Apellido"] }}</td>
-                    <td>{{ $participante["Segundo Apellido"] }}</td>
-                    <td>{{ $participante["Fecha De Nacimiento"] }}</td>
-                    <td>{{ $participante["Genero"] }}</td>
+                    <td>{{ $participante["primer_nombre"] }}</td>
+                    <td>{{ $participante["segundo_nombre"] }}</td>
+                    <td>{{ $participante["primer_apellido"] }}</td>
+                    <td>{{ $participante["segundo_apellido"] }}</td>
+                    <td>{{ $participante->fecha_nacimiento ? $participante->fecha_nacimiento->format('d-m-Y') : '' }}</td>
+                    <td>{{ $participante->genero->descripcion }}</td>
                     <td class="actions">
                         <button class="btn btn-primary btn btn-edit">Editar</button>
                         <button class="btn btn-danger  btn btn-delete">Eliminar</button>
