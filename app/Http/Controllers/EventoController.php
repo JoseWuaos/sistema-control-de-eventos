@@ -26,8 +26,8 @@ class EventoController extends Controller
     public function gestionarEvento(){
         $encargados = Encargado::all(); // Asegúrate de tener un modelo Encargado
         $tiposDeEventos = TipoDeEvento::all(); // Asegúrate de tener un modelo TipoDeEvento
-
-        return view('evento.gestionarEvento', compact('encargados', 'tiposDeEventos' ));
+        $title = 'Agregar Evento';
+        return view('evento.gestionarEvento', compact('encargados', 'tiposDeEventos', 'title' ));
     }
 
     public function asistencia($id){
@@ -38,10 +38,22 @@ class EventoController extends Controller
         return view('evento.gestionarAsistencia', compact('eventos' , 'generos', 'id'));
     }
 
+    public function editar($id){
+        
+
+        $evento = Evento::find($id);
+        $encargados = Encargado::all();
+        $tiposDeEventos = TipoDeEvento::all();
+        $title = 'Editar Evento';
+
+        return view('evento.gestionarEvento', compact('evento', 'encargados', 'tiposDeEventos', 'title'));
+    }
+
     public function guardar(Request $request){
 
         try {
             $validatedData = $request->validate([
+                'id' => 'nullable|uuid',
                 'nombre' => 'required|string|max:255', // Campo de texto para el nombre
                 'direccion' => 'required|string|max:255', // Campo de texto para la dirección
                 'fecha_inicio' => 'required|date', // Campo de fecha (asegúrate que el formato sea correcto)
@@ -51,8 +63,17 @@ class EventoController extends Controller
             ]);
     
     
-            
-            Evento::create($validatedData);
+            if( isset($validatedData['id'])) {
+                // Si el ID está presente, actualiza el evento
+                $evento = Evento::find($validatedData['id']);
+                if (!$evento) {
+                    return redirect()->back()->withErrors(['error' => 'Evento no encontrado.']);
+                }
+                $evento->update($validatedData);
+            } else {
+                // Si el ID no está presente, crea un nuevo evento
+                Evento::create($validatedData);
+            }
             
             return redirect()->route('eventos.index')->with('success', 'Evento creado exitosamente!');
         } catch (\Throwable $th) {
@@ -98,6 +119,26 @@ class EventoController extends Controller
            dd($th);
         }
        
+    }
+
+    public function eliminar($id){
+        try {
+        
+
+        $evento = Evento::find($id);
+        if ($evento) {
+            $evento->delete(); 
+            
+            return redirect()->route('eventos.index')->with('success', 'Evento eliminado exitosamente!');
+        } else {
+            return redirect()->route('eventos.index')->withErrors(['error' => 'Evento no encontrado.']);
+        }
+
+
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+        
     }
     
 }

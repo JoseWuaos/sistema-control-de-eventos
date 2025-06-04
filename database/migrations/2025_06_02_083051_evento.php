@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('encargado_id')->references('id')->on('encargado'); 
             $table->foreign('tipo_de_evento_id')->references('id')->on('tipo_de_evento'); 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -48,8 +48,8 @@
                     <td>{{$evento["tipo_de_evento"]["descripcion"] }}</td>
                     <td class="actions">
                         <a class="btn btn-success" href="/evento/asistencia/<?= $evento["id"] ?>">Asistencia</a>
-                        <button class="btn btn-primary btn btn-edit">Editar</button>
-                        <button class="btn btn-danger btn btn-delete">Eliminar</button>
+                        <a class="btn btn-primary btn btn-edit" href="/evento/<?= $evento["id"] ?>">Editar</a>
+                        <a class="btn btn-danger btn btn-delete" href="/evento/eliminar/<?= $evento["id"] ?>" >Eliminar</a>
                     </td>
                 </tr>
                 @endforeach
