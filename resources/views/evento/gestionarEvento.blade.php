@@ -37,12 +37,12 @@
                     </div>
                     <div class="col-sm-6">
                         <label for="Fecha inicio" class="form-label">Fecha inicio</label>
-                        <input type="date" id="Fecha de inicio" name="fecha_inicio" class="form-control"
+                        <input type="datetime-local" id="Fecha de inicio" name="fecha_inicio" class="form-control"
                             value="<?= isset($evento) ? $evento['fecha_inicio'] : '' ?>">
                     </div>
                     <div class="col-sm-6">
                         <label for="Fecha final" class="form-label">Fecha final</label>
-                        <input type="date" id="Fecha Final" name="fecha_fin" class="form-control"
+                        <input type="datetime-local" id="Fecha Final" name="fecha_fin" class="form-control"
                             value="<?= isset($evento) ? $evento['fecha_fin'] : '' ?>">
                     </div>
 
