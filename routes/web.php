@@ -11,9 +11,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/menu', [\App\Http\Controllers\EventoController::class, 'menu']);
 
 Route::get('/evento', [\App\Http\Controllers\EventoController::class, 'evento']);
+
+
+
 Route::get('/gestionarEvento', [\App\Http\Controllers\GestionarEvento::class, 'gestionarEvento']);
 
 Route::get('/encargado', [\App\Http\Controllers\EventoController::class, 'encargado']);

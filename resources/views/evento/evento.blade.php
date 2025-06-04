@@ -37,33 +37,21 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($eventos as $evento)
                 <tr>
-                    <td>Feria de Ciencias</td>
-                    <td>Escuela Central</td>
-                    <td>2025-06-10</td>
-                    <td>2025-06-12</td>
-                    <td>Lucía González</td>
-                    <td>Educativo</td>
+                    <td>{{$evento["nombre"] }}</td>
+                    <td>{{$evento["direccion"] }}</td>
+                    <td>{{$evento["fecha_inicio"] }}</td>
+                    <td>{{$evento["fecha_fin"] }}</td>
+                    <td>{{$evento["encargado"]["primer_nombre"] .' '. $evento["encargado"]["primer_apellido"] }}</td>
+                    <td>{{$evento["tipo_de_evento"]["descripcion"] }}</td>
                     <td class="actions">
                         <button class="btn btn-edit">Asistencia</button>
                         <button class="btn btn-edit">Editar</button>
                         <button class="btn btn-delete">Eliminar</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>Festival de Teatro</td>
-                    <td>Teatro Municipal</td>
-                    <td>2025-07-01</td>
-                    <td>2025-07-03</td>
-                    <td>Pedro Ruiz</td>
-                    <td>Cultural</td>
-                    <td class="actions">
-                        <button class="btn btn-edit">Asistencia</button>
-                        <button class="btn btn-edit">Editar</button>
-                        <button class="btn btn-delete">Eliminar</button>
-
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
         <nav aria-label="Page navigation">

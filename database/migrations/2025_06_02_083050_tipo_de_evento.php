@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tipo_de_evento', function (Blueprint $table) {
-            $table->uuid('evento_id');
-            $table->foreign('evento_id')->references('id')->on('evento');
+            $table->uuid('id')->primary();
+            $table->string('descripcion');            
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        
+        Schema::dropIfExists('tipo_de_evento');
     }
 };
