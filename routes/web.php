@@ -28,6 +28,7 @@ Route::get('/gestionarEncargado', [GestionarEncargado::class, 'gestionarEncargad
 Route::get('/participante', [GestionarParticipante::class, 'index'])->name('participante.index');
 Route::get('/gestionarParticipante', [GestionarParticipante::class, 'gestionarParticipante'])->name('participante.gestionarParticipante');
 
+Route::get('/participante/cedula/{cedula}', [GestionarParticipante::class, 'obtenerParticipantePorCedula'])->name('participante.obtenerParticipantePorCedula');
 
 Route::get('/gestionarAsistencia', [\App\Http\Controllers\GestionarAsistencia::class, 'gestionarAsistencia']);
 

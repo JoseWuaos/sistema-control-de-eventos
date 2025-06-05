@@ -38,7 +38,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="cedula" class="form-label ">Cedula</label>
-                                <input type="text" id="cedula" name="cedula" class="form-control">
+                                <input type="text" id="cedula" name="cedula" class="form-control" maxLength="9">
                             </div>
                             <div class="col-sm-6">
                                 <label for="primer_nombre" class="form-label ">Primer Nombre</label>
@@ -87,5 +87,52 @@
         </form>
     </div>
 </div>
+
+<script>
+    function fetchParticipanteData() { 
+        const value = document.getElementById('cedula').value;
+        if (value.length === 8 || value.length === 9) {
+            fetch(`/participante/cedula/${value}`)
+                .then(response => {
+                    if(response.status === 404){
+                        throw new Error('Participante no encontrado');
+                    }
+                      
+                    
+                    return response.json()
+                })
+                .then(data => {
+                    console.log(data)
+                        document.getElementById('primer_nombre').value = data.primer_nombre;
+                        document.getElementById('segundo_nombre').value = data.segundo_nombre;
+                        document.getElementById('primer_apellido').value = data.primer_apellido;
+                        document.getElementById('segundo_apellido').value = data.segundo_apellido;
+                        document.getElementById('genero').value = data.genero_id;
+
+                        const fechaNacimiento = dateFns.format(new Date(data.fecha_nacimiento), 'yyyy-MM-dd');
+                        document.getElementById('Fecha_nacimiento').value = fechaNacimiento;
+
+                        
+                    
+                })
+                
+        }
+    }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cedulaInput = document.getElementById('cedula');
+    cedulaInput.addEventListener('input', function() {
+        // add debounce to avoid too many requests
+        if (cedulaInput.timeout) {
+            clearTimeout(cedulaInput.timeout);
+        }
+        cedulaInput.timeout = setTimeout(() => {
+            fetchParticipanteData();
+        }, 500); // 500ms debounce        
+    });
+});
+</script>
+
 
 @endsection

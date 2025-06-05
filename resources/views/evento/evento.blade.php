@@ -11,13 +11,11 @@
        <br>
         <br>
 
-@include('components.title', [ 'title' => 'Gestionar evento'])
+@include('components.title', [ 'title' => 'Lista de Evento'])
 
 
 <div class="card" style="width: 100% margin-top: 48px; box-shadow: 0 0 10px rgba(0,0,0,0.08);">
     <div class="card-body">
-        <h2>Lista de Evento</h2>
-
         <a href="/evento/gestionar" class="btn btn-primary"
             style='position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 10px 20px; border-radius: 5px;'>+
             Nuevo Evento</a>

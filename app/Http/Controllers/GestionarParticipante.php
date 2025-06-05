@@ -19,4 +19,16 @@ class GestionarParticipante extends Controller
         return view('participante.gestionarParticipante');
     }
 
+    public function obtenerParticipantePorCedula($cedula)
+    {
+        
+        $participante = Participante::where('cedula', $cedula)->first();
+
+        if ($participante) {
+            return response()->json($participante);
+        } else {
+            return response()->json(['message' => 'Participante no encontrado'], 404);
+        }
+    }
+
 }
