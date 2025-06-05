@@ -15,13 +15,14 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('nombre');
             $table->string('direccion');
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->timestamp('fecha_inicio');
+            $table->timestamp('fecha_fin');
             $table->uuid('encargado_id');
             $table->uuid('tipo_de_evento_id');                      
             $table->foreign('encargado_id')->references('id')->on('encargado'); 
             $table->foreign('tipo_de_evento_id')->references('id')->on('tipo_de_evento'); 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

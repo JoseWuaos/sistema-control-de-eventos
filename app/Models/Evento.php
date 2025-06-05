@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasOne; 
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class evento extends Model
 {
-     use HasUuids;
+    use HasUuids;
+    use SoftDeletes;
+
 
     // nombre de la tabla
     protected $table = 'evento';
@@ -26,20 +29,31 @@ class evento extends Model
         'direccion' => 'string',
         'fecha_inicio' => 'datetime',
         'fecha_fin' => 'datetime',
-        'encargado_id' => 'string',
-        'tipo_de_evento_id' => 'string',
+        'encargado_id' => 'uuid',
+        'tipo_de_evento_id' => 'uuid'
     ];
 
+      protected $fillable = [
+        'nombre',
+        'direccion', 
+        'fecha_inicio', 
+        'fecha_fin',  
+        'encargado_id', 
+        'tipo_de_evento_id'
+    ];
+
+       
+
     public function encargado (): HasOne{
-       return $this->hasOne(encargado::class, 'id', 'encargado_id');
+       return $this->hasOne(Encargado::class, 'id', 'encargado_id');
     }
 
     public function tipo_de_evento (): HasOne{
-       return $this->hasOne(tipo_de_evento::class, 'id', 'tipo_de_evento_id');
+       return $this->hasOne(TipoDeEvento::class, 'id', 'tipo_de_evento_id');
     }
 
     
-    public static function findAll($perPage = 10){
+    public static function findAll($perPage = 100){
         return self::paginate($perPage);
     }
 }

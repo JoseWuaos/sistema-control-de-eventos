@@ -13,6 +13,7 @@ return new class extends Migration
     {
          Schema::create('participante', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('cedula');
             $table->string('primer_nombre');
             $table->string('segundo_nombre');
             $table->string('primer_apellido');

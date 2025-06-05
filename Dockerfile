@@ -31,3 +31,9 @@ WORKDIR /var/www/html
 
 #php artisan serve --host=0.0.0.0 --port=8000
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+
+# seed
+# php artisan db:seed
+
+# run migtrations
+# php artisan migrate

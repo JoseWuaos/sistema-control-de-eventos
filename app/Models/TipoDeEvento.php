@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
-class tipo_de_evento extends Model
+class TipoDeEvento extends Model
 {
      use HasUuids;
 
