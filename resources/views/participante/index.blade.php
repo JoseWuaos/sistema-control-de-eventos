@@ -28,7 +28,6 @@
                     <th>Segundo Nombre</th>
                     <th>Primer Apellido</th>
                     <th>Segundo Apellido</th>
-                    <th>Fecha De Nacimiento</th>
                     <th>Genero</th>
                     <th>Acción</th>
                 </tr>
@@ -39,8 +38,7 @@
                     <td>{{ $participante["primer_nombre"] }}</td>
                     <td>{{ $participante["segundo_nombre"] }}</td>
                     <td>{{ $participante["primer_apellido"] }}</td>
-                    <td>{{ $participante["segundo_apellido"] }}</td>
-                    <td>{{ $participante->fecha_nacimiento ? $participante->fecha_nacimiento->format('d-m-Y') : '' }}</td>
+                    <td>{{ $participante["segundo_apellido"] }}</td>                  
                     <td>{{ $participante->genero->descripcion }}</td>
                     <td class="actions">
                         <button class="btn btn-primary btn btn-edit">Editar</button>

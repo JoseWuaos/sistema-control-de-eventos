@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class participante extends Model
 {
@@ -19,7 +20,7 @@ class participante extends Model
     protected $keyType = 'string';
 
     //los artibutos del modelo 
-    protected $attributes = [
+    protected $attributes  = [
         'cedula' => 'string',
         'primer_nombre' => 'string',
         'segundo_nombre' => 'string',
@@ -27,11 +28,12 @@ class participante extends Model
         'segundo_apellido' => 'string',
        // 'fecha_nacimiento' => 'datetime',
         'genero_id' => 'string',
+        'id' => 'string', 
     ];
     protected $casts = [
     'fecha_nacimiento' => 'date', // O 'datetime' si tu columna en la base de datos incluye la hora
-    // ... otros casts para id, genero_id, etc.
-];
+   
+    ];
 
 
      protected $fillable = [
@@ -44,8 +46,11 @@ class participante extends Model
         'genero_id',
     ];
 
-    public function genero (): BelongsTo {
+    public function generos (): BelongsTo {
        return $this->belongsTo(Genero::class, 'genero_id', 'id');
+    }
+    public function participante() {
+        return $this->hasMany(participante::class, 'participante_id', 'id');
     }
 
      public static function findAll($perPage = 10){
