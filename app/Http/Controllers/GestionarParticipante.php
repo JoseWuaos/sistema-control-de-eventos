@@ -57,7 +57,19 @@ class GestionarParticipante extends Controller
             return redirect()->route('participante.index')->with('success', 'Participante eliminado exitosamente.');
         } else {
             return redirect()->route('participante.index')->withErrors(['error' => 'Participante no encontrado.']);
+
+        }
+    public function obtenerParticipantePorCedula($cedula)
+    {
+        
+        $participante = Participante::where('cedula', $cedula)->first();
+
+        if ($participante) {
+            return response()->json($participante);
+        } else {
+            return response()->json(['message' => 'Participante no encontrado'], 404);
         }
     }
 
+}
 }

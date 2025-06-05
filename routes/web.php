@@ -33,5 +33,6 @@ Route::post('/gestionarParticipante', [GestionarParticipante::class, 'guardar'])
 Route::get('/gestionarParticipante/eliminar/{id}', [GestionarParticipante::class, 'eliminar'])->name('eventos.eliminar');
 Route::get('/gestionarParticipante/{id}', [GestionarParticipante::class, 'editar'])->name('gestionarParticipante.editar');
 
+Route::get('/participante/cedula/{cedula}', [GestionarParticipante::class, 'obtenerParticipantePorCedula'])->name('participante.obtenerParticipantePorCedula');
 
 Route::get('/layout', [EventoController::class, 'layout']);
