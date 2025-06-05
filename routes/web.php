@@ -20,7 +20,7 @@ Route::get('/evento/eliminar/{id}', [EventoController::class, 'eliminar'])->name
 Route::get('/evento/{id}', [EventoController::class, 'editar'])->name('eventos.editar');
 
 
-Route::get('/gestionarEvento', [GestionarEvento::class, 'gestionarEvento']);
+Route::get('/gestionarEvento', [GestionarEvento::class, 'gestionarEvento'])->name('gestionarEncargado.gestionarEncargado');
 
 Route::get('/encargado', [GestionarEncargado::class, 'index']);
 Route::get('/gestionarEncargado', [GestionarEncargado::class, 'gestionarEncargado']);

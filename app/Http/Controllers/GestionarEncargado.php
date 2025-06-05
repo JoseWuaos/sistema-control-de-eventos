@@ -12,4 +12,12 @@ class GestionarEncargado extends Controller
         $encargados = Encargado::all();
         return view('encargado.index', compact('encargados'));
     }
+
+
+    public function gestionarEncargado()
+    {
+         $encargados = Encargado::all();
+        return view('encargado.gestionarEncargado', compact('encargados'));
+    }
+
 }
