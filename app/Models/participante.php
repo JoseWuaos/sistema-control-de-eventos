@@ -33,10 +33,7 @@ class participante extends Model
     // ... otros casts para id, genero_id, etc.
 ];
 
-<<<<<<< HEAD:app/Models/participante.php
-    public function genero (): BelongsTo {
-       return $this->belongsTo(genero::class, 'genero_id', 'id');
-=======
+
      protected $fillable = [
         'cedula',
         'primer_nombre',
@@ -47,9 +44,8 @@ class participante extends Model
         'genero_id',
     ];
 
-    public function genero (): HasMany{
-       return $this->hasMany(genero::class, 'id', 'genero_id');
->>>>>>> ebc8e41eb1a68b710ee6fd27131a67e8e6aed8e2:app/Models/Participante.php
+    public function genero (): BelongsTo {
+       return $this->belongsTo(genero::class, 'genero_id', 'id');
     }
 
      public static function findAll($perPage = 10){
