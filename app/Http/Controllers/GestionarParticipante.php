@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\participante;
+use App\Models\Participante;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

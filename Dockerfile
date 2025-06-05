@@ -29,13 +29,14 @@ WORKDIR /var/www/html
 
 #RUN composer install
 
-#php artisan serve --host=0.0.0.0 --port=8000
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+#CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
 
+#CMD ["return 1"]
 
-#php artisan migrate:reset  --> elimina migraciones bd
-# seed
-# php artisan db:seed
+# php artisan migrate:reset  --> elimina migraciones bd
 
-# run migtrations
-# php artisan migrate
+# php artisan migrate  -->> migraciones
+
+# php artisan db:seed  -->> Seeds
+
+# php artisan serve --host=0.0.0.0 --port=8000   -->> Inciar servidor

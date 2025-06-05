@@ -45,7 +45,7 @@ class participante extends Model
     ];
 
     public function genero (): BelongsTo {
-       return $this->belongsTo(genero::class, 'genero_id', 'id');
+       return $this->belongsTo(Genero::class, 'genero_id', 'id');
     }
 
      public static function findAll($perPage = 10){
