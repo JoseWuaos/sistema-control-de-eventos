@@ -20,10 +20,16 @@ Route::get('/evento/eliminar/{id}', [EventoController::class, 'eliminar'])->name
 Route::get('/evento/{id}', [EventoController::class, 'editar'])->name('eventos.editar');
 
 
-Route::get('/gestionarEvento', [GestionarEvento::class, 'gestionarEvento'])->name('gestionarEncargado.gestionarEncargado');
 
-Route::get('/encargado', [GestionarEncargado::class, 'index']);
+Route::get('/encargado', [GestionarEncargado::class, 'index'])->name('encargado.index');;
+Route::get('/encargado/eliminar/{id}', [GestionarEncargado::class, 'eliminar'])->name('encargado.eliminar');
 Route::get('/gestionarEncargado', [GestionarEncargado::class, 'gestionarEncargado']);
+Route::get('/encargado/{id}', [GestionarEncargado::class, 'editar'])->name('encargado.editar');
+Route::post('/gestionarEncargado', [GestionarEncargado::class, 'guardar'])->name('GestionarEncargado.guardar');
+
+
+
+
 
 Route::get('/participante', [GestionarParticipante::class, 'index'])->name('participante.index');
 Route::get('/gestionarParticipante', [GestionarParticipante::class, 'gestionarParticipante'])->name('participante.gestionarParticipante');

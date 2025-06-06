@@ -53,13 +53,13 @@
                             @foreach ($tiposDeEventos as $tipoDeEvento)
                             @if( isset($evento['tipo_de_evento_id']) && $tipoDeEvento['id'] ==
                             $evento['tipo_de_evento_id'])
-                            <option selected='true' value="<?= $tipoDeEvento['id']?>"><?= $tipoDeEvento['descripcion']?>
-                            </option>
-                            @else
-                            <option value="<?= $tipoDeEvento['id']?>"><?= $tipoDeEvento['descripcion']?></option>
-                            @endif
-                            @endforeach
-                        </select>
+                                <option selected='true' value="<?= $tipoDeEvento['id']?>"><?= $tipoDeEvento['descripcion']?>
+                                </option>
+                                @else
+                                <option value="<?= $tipoDeEvento['id']?>"><?= $tipoDeEvento['descripcion']?></option>
+                                @endif
+                                @endforeach
+                            </select>
                     </div>
 
                     <div class="col-sm-6">
