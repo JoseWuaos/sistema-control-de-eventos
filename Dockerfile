@@ -27,7 +27,7 @@ RUN docker-php-ext-install -j$(nproc) \
 # Set the working directory
 WORKDIR /var/www/html
 
-#RUN composer install
+#1 - RUN composer install
 
 #CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
 
@@ -35,8 +35,8 @@ WORKDIR /var/www/html
 
 # php artisan migrate:reset  --> elimina migraciones bd
 
-# php artisan migrate  -->> migraciones
+#2 php artisan migrate  -->> migraciones
 
-# php artisan db:seed  -->> Seeds
+#3 php artisan db:seed  -->> Seeds
 
-# php artisan serve --host=0.0.0.0 --port=8000   -->> Inciar servidor
+#4 php artisan serve --host=0.0.0.0 --port=8000   -->> Inciar servidor

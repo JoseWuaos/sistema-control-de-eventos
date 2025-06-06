@@ -14,6 +14,7 @@ Route::get('/', function () {
 Route::get('/evento', [EventoController::class, 'index'])->name('eventos.index');
 Route::post('/evento', [EventoController::class, 'guardar'])->name('eventos.guardar');
 Route::get('/evento/gestionar', [EventoController::class, 'gestionarEvento'])->name('eventos.gestionarEvento');
+
 Route::get('/evento/asistencia/{id}', [EventoController::class, 'asistencia'])->name('eventos.asistencia');
 Route::post('/evento/asistencia', [EventoController::class, 'guardarAsistencia'])->name('eventos.guardarAsistencia');
 Route::get('/evento/eliminar/{id}', [EventoController::class, 'eliminar'])->name('eventos.eliminar');
@@ -34,11 +35,10 @@ Route::post('/gestionarEncargado', [GestionarEncargado::class, 'guardar'])->name
 
 Route::get('/participante', [GestionarParticipante::class, 'index'])->name('participante.index');
 Route::get('/gestionarParticipante', [GestionarParticipante::class, 'gestionarParticipante'])->name('participante.gestionarParticipante');
+Route::post('/gestionarParticipante', [GestionarParticipante::class, 'guardar'])->name('GestionarParticipante.guardar');
+Route::get('/gestionarParticipante/eliminar/{id}', [GestionarParticipante::class, 'eliminar'])->name('gestionarParticipante.eliminar');
+Route::get('/participante/{id}', [GestionarParticipante::class, 'editar'])->name('gestionarParticipante.editar');
 
 Route::get('/participante/cedula/{cedula}', [GestionarParticipante::class, 'obtenerParticipantePorCedula'])->name('participante.obtenerParticipantePorCedula');
 
-Route::get('/gestionarAsistencia', [\App\Http\Controllers\GestionarAsistencia::class, 'gestionarAsistencia']);
-
-
-
-Route::get('/layout', [\App\Http\Controllers\EventoController::class, 'layout']);
+Route::get('/layout', [EventoController::class, 'layout']);
