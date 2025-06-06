@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Carbon\Carbon; 
 
 class Encargado extends Model 
 {
@@ -24,13 +22,13 @@ class Encargado extends Model
     // public $timestamps = false; // Descomenta si no tienes estas columnas
 
     // Atributos que pueden ser asignados masivamente
-    protected $fillable = [
+   protected $fillable = [
         'primer_nombre',
         'segundo_nombre',
         'primer_apellido',
         'segundo_apellido',
        // 'fecha_nacimiento' => 'datetime',
-       'genero_id' => 'string', 
+       'genero_id', 
     ];
 
     // Castea atributos a tipos de datos específicos
@@ -44,6 +42,7 @@ class Encargado extends Model
         return $this->belongsTo(Genero::class, 'genero_id', 'id'); // ¡Cambiar a Genero::class!
     }
 
+      
     // Método para obtener encargados paginados
     public static function findAll($perPage = 10)
     {

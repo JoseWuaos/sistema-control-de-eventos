@@ -7,38 +7,67 @@
 <br>
 <br>
 
-    @include('components.title', [ 'title' => 'Gestionar Encargado'])
+@include('components.title', [ 'title' => 'Gestionar Encargado'])
+
+
+{{-- **** INICIO DEL BLOQUE PARA MOSTRAR ERRORES DE VALIDACIÓN **** --}}
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+{{-- **** FIN DEL BLOQUE PARA MOSTRAR ERRORES DE VALIDACIÓN **** --}}
+
 
 <div class="card " style="box-shadow: 0 0 10px rgba(0,0,0,0.08); ">
     <div class="card-body">
         <h2>Agregar un Encargado</h2>
-        <form>
+        <form action="{{ route('GestionarEncargado.guardar') }}" method="POST">
+            @csrf
+            @if (isset($encargado))
+            <input type="hidden" name="id" value="{{ $encargado->id }}">
+            @endisset
+
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
                         <label for="Nombre" class="form-label">Primer Nombre</label>
-                        <input type="text" id="Nombre" name="Nombre" class="form-control">
+                        <input type="text" id="primer_nombre" name="primer_nombre" class="form-control"
+                            value="<?= isset($encargado) ? $encargado['primer_nombre'] : '' ?>">
                     </div>
                     <div class="col-sm-6">
-                        <label for="Direccion" class="form-label">Segundo Nombre</label>
-                        <input type="text" id="Direccion" name="Direccion" class="form-control">
+                        <label for="Segundo Nombre" class="form-label">Segundo Nombre</label>
+                        <input type="text" id="segundo_nombre" name="segundo_nombre" class="form-control"
+                            value="<?= isset($encargado) ? $encargado['segundo_nombre'] : '' ?>">
                     </div>
                     <div class="col-sm-6">
-                        <label for="Fecha inicio" class="form-label">Primer Apellido</label>
-                        <input type="text" id="Fecha de inicio" name="fecha de inicio" class="form-control">
+                        <label for="Primer Apellido" class="form-label">Primer Apellido</label>
+                        <input type="text" id="primer_apellido" name="primer_apellido" class="form-control"
+                            value="<?= isset($encargado) ? $encargado['primer_apellido'] : '' ?>">
                     </div>
                     <div class="col-sm-6">
-                        <label for="Fecha final" class="form-label">Segundo Apellido</label>
-                        <input type="text" id="Fecha Final" name="Fecha final" class="form-control">
+                        <label for="Primer Apellido" class="form-label">Segundo Apellido</label>
+                        <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control"
+                            value="<?= isset($encargado) ? $encargado['segundo_apellido'] : '' ?>">
                     </div>
                     <div class="col-sm-6">
-                        <label for="Encargado" class="form-label">Genero</label>
-                        <select id="Encargado" name="Encargado" class="form-select">
-                            <option value="">Seleccione</option>
-                            <option value="Festejo">Femenino</option>
-                            <option value="Feria Cultural">Masculino</option>
-                            <option value="otro">Otro</option>
-                        </select>
+                        <label for="Genero" class="form-label">Genero</label>
+                        <<select id="genero" name="genero_id" class="form-select">
+                                    <option value="" default> </option>
+                                    @foreach ($generos as $genero)
+                            @if( isset($participante['genero_id']) && $genero['id'] == $participante['genero_id'])
+                            <option selected='true' value="<?= $genero['id']?>">
+                                <?= $genero['descripcion'] ?></option>
+                            @else
+                            <option value="<?= $genero['id']?>">
+                                <?= $genero['descripcion']?></option>
+                            @endif
+                            @endforeach
+                                </select>
                     </div>
                     <div class="col-sm-12 ">
                         <button class="btn btn-primary float-end mt-3">Confirmar</button>
