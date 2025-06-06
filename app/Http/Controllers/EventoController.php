@@ -14,8 +14,7 @@ use App\Models\Participante;
 class EventoController extends Controller
 {
     
-    public function index()
-    {
+    public function index(){
         // obetner la lista de eventos desde Bd usando postgresql laravel 
         $eventos = Evento::findAll();
 
@@ -139,6 +138,20 @@ class EventoController extends Controller
             dd($th);
         }
         
+    }
+
+    public function listadoDeAsistencia($id){
+        // Obtener el evento por su ID
+        $evento = Evento::find($id);
+        
+        if (!$evento) {
+            return redirect()->route('eventos.index')->withErrors(['error' => 'Evento no encontrado.']);
+        }
+
+        // Obtener las asistencias del evento
+        $asistencias = Asistencia::where('evento_id', $id)->get();
+        //dd($asistencias[0]->participante);
+        return view('evento.listadoDeAsistencia', compact('evento', 'asistencias'));
     }
     
 }

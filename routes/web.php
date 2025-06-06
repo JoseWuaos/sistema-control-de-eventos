@@ -18,6 +18,7 @@ Route::get('/evento/asistencia/{id}', [EventoController::class, 'asistencia'])->
 Route::post('/evento/asistencia', [EventoController::class, 'guardarAsistencia'])->name('eventos.guardarAsistencia');
 Route::get('/evento/eliminar/{id}', [EventoController::class, 'eliminar'])->name('eventos.eliminar');
 Route::get('/evento/{id}', [EventoController::class, 'editar'])->name('eventos.editar');
+Route::get('/evento/{id}/listadoDeAsistencia', [EventoController::class, 'listadoDeAsistencia'])->name('eventos.listadoDeAsistencia');
 
 
 Route::get('/gestionarEvento', [GestionarEvento::class, 'gestionarEvento']);

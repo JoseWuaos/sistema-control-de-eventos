@@ -46,22 +46,14 @@
                     <td>{{$evento["tipo_de_evento"]["descripcion"] }}</td>
                     <td class="actions">
                         <a class="btn btn-success" href="/evento/asistencia/<?= $evento["id"] ?>">Asistencia</a>
-                        <a class="btn btn-primary btn btn-edit" href="/evento/<?= $evento["id"] ?>">Editar</a>
-                        <a class="btn btn-danger btn btn-delete" href="/evento/eliminar/<?= $evento["id"] ?>" >Eliminar</a>
+                        <a class="btn btn-primary" href="/evento/<?= $evento["id"] ?>">Editar</a>
+                        <a class="btn btn-danger" href="/evento/eliminar/<?= $evento["id"] ?>" >Eliminar</a>
+                        <a class="btn btn-info" href="/evento/<?= $evento["id"] ?>/listadoDeAsistencia">Ver asistencia</a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        <nav aria-label="Page navigation">
-            <ul class="pagination custom-pagination">
-                <li class="page-item"><a class="page-link" href="#">Atras</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Siguente</a></li>
-            </ul>
-        </nav>
     </div>
 </div>
 @endsection

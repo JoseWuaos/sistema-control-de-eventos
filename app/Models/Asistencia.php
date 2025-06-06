@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasOne; 
 
 class asistencia extends Model
 {
@@ -33,8 +34,8 @@ class asistencia extends Model
         
     ];
 
-    public function participante (): HasMany{
-       return $this->hasMany(participante::class, 'id', 'participante_id');
+    public function participante (): HasOne{
+       return $this->hasOne(Participante::class, 'id', 'participante_id');
     }
 
 }
