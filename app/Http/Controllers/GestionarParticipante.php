@@ -10,27 +10,32 @@ class GestionarParticipante extends Controller
 {
   public function index()
 {
+    $participantes = Participante::with('genero')->get(); 
   $participantes = Participante::all();
    return view('participante.index', compact('participantes'));
 }
 
     public function gestionarParticipante()
     {
-        $generos = Genero::all();
-      $participantes = Participante::all(); 
+       $generos = Genero::all(); 
         $title = 'Agregar Participante';
-        return view('participante.gestionarParticipante');
+      $participantes = Participante::all(); 
+        return view('participante.gestionarParticipante', compact('generos', 'title'));
     }
 
-    public function editar($id)
+ public function editar($id)
     {
-        $participante = Participante::find($id);
-          $generos = Genero::all();
+       
+        $participante = Participante::find($id); // Obtener el participante a editar
+        $generos = Genero::all(); // Obtener todos los géneros para el campo select
         $title = 'Editar Participante';
-        return view('participante.gestionarParticipante', compact('participante', 'title'));
+        return view('participante.gestionarParticipante', compact('participante', 'generos', 'title')); 
     }
+
     public function guardar(Request $request)
     {
+          try {
+            
         $validatedData = $request->validate([
             'id' => 'nullable|uuid',
             'cedula' => 'required|string|max:20',
@@ -42,23 +47,46 @@ class GestionarParticipante extends Controller
             'genero_id' => 'required|uuid|exists:genero,id'
         ]);
 
-        Participante::updateOrCreate(
-            ['id' => $request->input('id')],
-            $validatedData
-        );
-
-        return redirect()->route('participante.index')->with('success', 'Participante guardado exitosamente.');
-    }
-    public function eliminar($id)
-    {
-        $participante = Participante::find($id);
-        if ($participante) {
-            $participante->delete();
-            return redirect()->route('participante.index')->with('success', 'Participante eliminado exitosamente.');
+  if( isset($validatedData['id'])) {
+            $participante = Participante::find($validatedData['id']);
+            if (!$participante) {
+                return redirect()->back()->withErrors(['error' => 'Participante no encontrado.']);
+            }
+             $participante->update($validatedData);
         } else {
-            return redirect()->route('participante.index')->withErrors(['error' => 'Participante no encontrado.']);
-
+           Participante::create($validatedData);
         }
+        return redirect()->route('participante.index')->with('success', 'Participante guardado exitosamente.');
+    } catch (\Throwable $th) {
+        return redirect()->back()->withErrors(['error' => 'Error al guardar el participante: ' . $th->getMessage()]);
+    }
+    }
+
+
+
+
+    public function eliminar($id)  {
+
+          try {
+        
+
+       $participante = Participante::find($id);
+        if ($participante) {
+            $participante->delete(); 
+            
+            return redirect()->route('participante.index')->with('success', 'Evento eliminado exitosamente!');
+        } else {
+            return redirect()->route('participante.index')->withErrors(['error' => 'Evento no encontrado.']);
+        }
+
+
+        } catch (\Throwable $th) {
+            return redirect()->route('participante.index')->withErrors(['error' => 'Error al eliminar el participante: ' . $th->getMessage()]);
+        }
+        
+    }
+
+
     public function obtenerParticipantePorCedula($cedula)
     {
         
@@ -69,7 +97,7 @@ class GestionarParticipante extends Controller
         } else {
             return response()->json(['message' => 'Participante no encontrado'], 404);
         }
+         
     }
 
-}
 }

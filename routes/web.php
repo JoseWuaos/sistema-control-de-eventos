@@ -30,8 +30,8 @@ Route::get('/gestionarEncargado', [GestionarEncargado::class, 'gestionarEncargad
 Route::get('/participante', [GestionarParticipante::class, 'index'])->name('participante.index');
 Route::get('/gestionarParticipante', [GestionarParticipante::class, 'gestionarParticipante'])->name('participante.gestionarParticipante');
 Route::post('/gestionarParticipante', [GestionarParticipante::class, 'guardar'])->name('GestionarParticipante.guardar');
-Route::get('/gestionarParticipante/eliminar/{id}', [GestionarParticipante::class, 'eliminar'])->name('eventos.eliminar');
-Route::get('/gestionarParticipante/{id}', [GestionarParticipante::class, 'editar'])->name('gestionarParticipante.editar');
+Route::get('/gestionarParticipante/eliminar/{id}', [GestionarParticipante::class, 'eliminar'])->name('gestionarParticipante.eliminar');
+Route::get('/participante/{id}', [GestionarParticipante::class, 'editar'])->name('gestionarParticipante.editar');
 
 Route::get('/participante/cedula/{cedula}', [GestionarParticipante::class, 'obtenerParticipantePorCedula'])->name('participante.obtenerParticipantePorCedula');
 

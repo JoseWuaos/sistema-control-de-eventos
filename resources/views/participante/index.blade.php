@@ -24,10 +24,12 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Cedula</th>
                     <th>Primer Nombre</th>
                     <th>Segundo Nombre</th>
                     <th>Primer Apellido</th>
                     <th>Segundo Apellido</th>
+                    <th>Fecha de Nacimiento</th>
                     <th>Genero</th>
                     <th>Acción</th>
                 </tr>
@@ -35,14 +37,16 @@
             <tbody>
                 @foreach ($participantes as $participante)
                 <tr>
+                    <td>{{ $participante["cedula"] }}</td>
                     <td>{{ $participante["primer_nombre"] }}</td>
                     <td>{{ $participante["segundo_nombre"] }}</td>
                     <td>{{ $participante["primer_apellido"] }}</td>
-                    <td>{{ $participante["segundo_apellido"] }}</td>                  
+                    <td>{{ $participante["segundo_apellido"] }}</td>      
+                    <td>{{ $participante->fecha_nacimiento->format('d-m-Y')  }}</td>                  
                     <td>{{ $participante->genero->descripcion }}</td>
                     <td class="actions">
-                        <button class="btn btn-primary btn btn-edit">Editar</button>
-                        <button class="btn btn-danger  btn btn-delete">Eliminar</button>
+                        <a class="btn btn-primary btn btn-edit" href="/participante/<?= $participante["id"] ?>">Editar</a>
+                       <a class="btn btn-danger  btn btn-delete" href="/gestionarParticipante/eliminar/<?= $participante["id"] ?>">Eliminar</a>
                     </td>
                 </tr>
                 @endforeach
