@@ -24,7 +24,7 @@
     {{-- **** FIN DEL BLOQUE PARA MOSTRAR ERRORES DE VALIDACIÓN **** --}}
 
     <h1 class="titulo">Gestion de Encargado</h1>
-    <div style="width: 100%; padding: 3px; background-color: blue ">
+    <div style="width: 100%; padding: 3px; background-color: #FF007F ">
 
     </div>
     <div class="card" style="width: 100% margin-top: 48px; box-shadow: 0 0 10px rgba(0,0,0,0.08);">

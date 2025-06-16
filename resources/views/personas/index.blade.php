@@ -11,7 +11,7 @@
 <br>
 
 <h1 class="titulo">Gestion de Personas</h1>
-<div style="width: 100%; padding: 3px; background-color: blue "></div>
+<div style="width: 100%; padding: 3px; background-color: #FF007F "></div>
 
 
 <div class="card" style="width: 100% margin-top: 48px; box-shadow: 0 0 10px rgba(0,0,0,0.08);">
